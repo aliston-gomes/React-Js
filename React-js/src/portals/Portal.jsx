@@ -1,49 +1,37 @@
 import { useState } from "react";
 import ReactDom from "react-dom";
+
 const Portal = () => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const openPortal = () => {
-    setModalOpen(!isModalOpen);
+  const openModal = () => {
+    setModalOpen(prev_state => !prev_state);
   };
-  const poralElement = document.getElementById("my-portal");
-  //todo  ACTUAL MODAL
-  const Modal = () => {
+  const ModalElement = document.getElementById("my-portal");
+  const Modal = props => {
+    console.log(props.modalData);
     return (
-      <section
+      <div
         style={{
-          position: "fixed",
-          top: "0",
-          bottom: "0",
-          right: "0",
-          left: "0",
           height: "100vh",
           width: "100vw",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: "6",
-          background: "rgba(247, 247, 247, 0.05)",
+          position: "fixed",
+          top: "0",
+          left: "0",
+          right: "0",
+          bottom: "0",
+          background: "#2d4f45",
         }}
       >
-        <div
-          style={{
-            height: "20vh",
-            width: "30vw",
-            background: "#efefef",
-            borderRadius: "9px",
-          }}
-        >
-          <h1>This Is a modal created by Portal</h1>
-          <button onClick={openPortal}>Close Modal</button>
-        </div>
-      </section>
+        <h1>This is a Modal created by portal</h1>
+        <button onClick={props.modalData}>Close Modal</button>
+      </div>
     );
   };
   return (
     <div>
-      {isModalOpen &&
-        ReactDom.createPortal(<Modal modal={openPortal} />, poralElement)}
-      <button onClick={openPortal}>Open Portal</button>
+      <button onClick={openModal}>Open Modal</button>
+      {isModalOpen == true &&
+        ReactDom.createPortal(<Modal modalData={openModal} />, ModalElement)}
     </div>
   );
 };
