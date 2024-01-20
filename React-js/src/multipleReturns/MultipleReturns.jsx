@@ -14,6 +14,7 @@ const MultipleReturns = () => {
   }, []);
   console.log(products);
   if (products.length < 1) {
+    
     return <div>{<h1>Loading...</h1>}</div>;
   }
   //ACTS AS THE ELSE
