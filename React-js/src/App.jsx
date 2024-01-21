@@ -2,9 +2,9 @@ import "./App.css";
 // import Portal from "./portals/Portal";
 // import Refs from "./refs/Refs";
 // import useIncrementor from "./customHooks/UseIncrementor";
-// import UseMemo from "./Hooks/UseMemo";
-// import UseCallBack from "./Hooks/UseCallBack";
-// import UseReducer from "./Hooks/UseReducer";
+import UseMemo from "./Hooks/UseMemo";
+import UseCallBack from "./Hooks/UseCallBack";
+import UseReducer from "./Hooks/UseReducer";
 import Child from "./contextApi/Child";
 import ContextStore from "./contextApi/ContextStore";
 import GrandChild from "./contextApi/GrandChild";
@@ -29,7 +29,7 @@ function App() {
       {/* <Refs /> */}
       {/* {Inc} */}
       {/* <UseMemo /> */}
-      {/* <UseCallBack /> */}
+      <UseCallBack />
       {/* <UseReducer /> */}
       {/* <ContextStore>
         <Child />
@@ -38,13 +38,11 @@ function App() {
         <Router>
           {x == 0 && (
             <Suspense fallback={<Loader />}>
-              <PRIVATE_ROUTES />
+              {/* <PRIVATE_ROUTES /> */}
             </Suspense>
           )}
           {x == 1 && (
-            <Suspense fallback={<Loader />}>
-              <PUBLIC_ROUTES />
-            </Suspense>
+            <Suspense fallback={<Loader />}>{/* <PUBLIC_ROUTES /> */}</Suspense>
           )}
           {/* <Routes>
             <Route path="/" element={<GrandChild />}>
