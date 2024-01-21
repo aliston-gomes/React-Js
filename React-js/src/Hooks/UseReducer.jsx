@@ -1,50 +1,49 @@
 import React, { useReducer } from "react";
 
 const UseReducer = () => {
-  const initialState = 0;
+  const initialCount = 0;
   const reducer = (state, action) => {
     switch (action) {
       case "increment":
         return state + 1;
       case "decrement":
-        return state - 1;
+        if (state > 0) {
+          return state - 1;
+        } else {
+          return (state = 0);
+        }
       case "reset":
-        return initialState;
+        return (state = initialCount);
       default:
-        return state;
+        return (state = "0");
     }
   };
-  const [count, dispatch] = useReducer(reducer, initialState);
+  const [count, dispatch] = useReducer(reducer, initialCount);
   return (
-    <div>
+    <React.Fragment>
       <h1>{count}</h1>
       <button
-        type="button"
         onClick={() => {
           dispatch("increment");
         }}
       >
-        +
+        Incremen
       </button>
       <button
-        type="button"
         onClick={() => {
           dispatch("decrement");
         }}
       >
-        -
+        Decrement
       </button>
       <button
-        type="button"
         onClick={() => {
           dispatch("reset");
         }}
       >
-        {" "}
-        0{" "}
+        Reset
       </button>
-    </div>
+    </React.Fragment>
   );
 };
-
 export default UseReducer;
