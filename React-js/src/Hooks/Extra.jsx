@@ -1,15 +1,14 @@
-import React, { useCallback, useEffect } from "react";
+import { memo, useMemo } from "react";
 
-const Extra = ({ data, increment }) => {
-  const handleClick = useCallback(() => {
-    increment();
-  }, [increment]);
-  console.log("renderd Extra Component");
+const Extra = ({ state }) => {
+  let statx = useMemo(() => {}, []);
+  console.log("renderd Child Component");
   return (
     <div>
-      <button onClick={handleClick}>Click Me</button>
+      <h1>{state}</h1>
     </div>
   );
 };
 
-export default Extra;
+export default memo(Extra);
+Extra.defaultProps = { state: "asd" };
