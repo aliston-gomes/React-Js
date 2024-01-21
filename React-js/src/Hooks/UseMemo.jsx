@@ -1,35 +1,36 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 const UseMemo = () => {
-  const [number, setNumber] = useState(0);
-  const func = n => {
-    for (let i = n; i < 10000; i++) {
-      console.log("Processing");
-    }
-  };
-  const Loop = useMemo(() => {
-    return func(number);
-  }, [number]);
-  const [isTrue, setIsTrue] = useState(false);
+  const [count, setCount] = useState(0);
+  const [minusCount, setMinusCount] = useState(100);
+  const multipliedCount = useMemo(() => {
+    console.log("MULTIPLIED FUNCTION CALLED");
+    return count * 100;
+  }, [count]);
   return (
-    <div style={{ background: isTrue ? "red" : "green" }}>
-      <input
-        type="number"
-        onChange={e => {
-          setNumber(e.target.value);
-          console.log(number);
-        }}
-      />
-      <div>{Loop}</div>
-      <button
-        type="submit"
-        value={number}
-        onClick={() => {
-          setIsTrue(prev => !prev);
-        }}
-      >
-        Button
-      </button>
+    <div>
+      <h1>Count:{count}</h1>
+      <br />
+      <h1>Minus Count:{minusCount}</h1>
+      <br />
+      <h1>Multiplied Count:{multipliedCount}</h1>
+      <br />
+      <div>
+        <button
+          onClick={() => {
+            setCount(count + 1);
+          }}
+        >
+          ADD
+        </button>
+        <button
+          onClick={() => {
+            setMinusCount(minusCount - 1);
+          }}
+        >
+          SUB
+        </button>
+      </div>
     </div>
   );
 };
