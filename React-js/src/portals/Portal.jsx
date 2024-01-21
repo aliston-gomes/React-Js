@@ -22,14 +22,13 @@ const Portal = () => {
           bottom: "0",
           background: "#2d4f45",
         }}
-
       >
         <h1>This is a Modal created by portal</h1>
         <button onClick={props.modalData}>Close Modal</button>
       </div>
     );
   };
-  
+
   return (
     <div>
       <button onClick={openModal}>Open Modal</button>
